@@ -38,6 +38,9 @@ typedef nx_struct chatMessage
 	
 	nx_int32_t username[50];
 	nx_int8_t usernameLength;
+	
+	nx_int32 dest[50];
+	nx_int8_t destLength;
 }chatMessage;
 
 // Sequence number of this node.
