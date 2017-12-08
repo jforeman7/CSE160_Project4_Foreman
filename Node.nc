@@ -163,7 +163,12 @@ implementation
 
 
 			// If the message has a TTL of 0, do nothing with it.
-			if(myMsg->TTL == 0) {}
+			if(myMsg->TTL == 0) {return msg;}
+			
+			else if(myMsg->protocol == PROTOCOL_TCP_CHAT && myMsg->dest == TOS_NODE_ID)
+			{
+				dbg(TRANSPORT_CHANNEL, "Chat DATA packet received.\n");
+			}
 			
 			// Transport packet. If intended for this node, handle it.
 			else if(myMsg->protocol == PROTOCOL_TCP && myMsg->dest == TOS_NODE_ID)
@@ -339,7 +344,9 @@ implementation
 						return msg;
 						
 					} // End flag 5 handle.
-					else if(receivedSocket->socketState.flag == 8){ //SYN from chat client 
+					else if(receivedSocket->socketState.flag == 8)
+					{ 
+						// SYN from chat client 
 						// Update the state of the Socket.
 						tempSocket.socketState.flag = 9;
 						tempSocket.socketState.dest.port = receivedSocket->socketState.src;
@@ -359,19 +366,20 @@ implementation
 						
 						return msg;
 					}
-					else if(receivedSocket->socketState.flag == 9){
-					// Packet to reply to the SYN_ACK.
+					else if(receivedSocket->socketState.flag == 9)
+					{
+						// Packet to reply to the SYN_ACK.
 						// Specifies that a connection has been established.
 						pack DATA;
 						
+						int lol = 0;
 						
-						
-						//makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &tempSocket, (uint8_t) sizeof(tempSocket));
+						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &lol, (uint8_t) sizeof(lol));
 					
 						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established.\n");
 						
-						// Send out the ACK.
-						//call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
+						// Send out the Username.
+						call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
 					}
 					
@@ -980,6 +988,9 @@ implementation
 
 	int forwardPacketTo(lspTable* list, int dest)
 	{	
+		if(TOS_NODE_ID == 2)
+			return 1;
+			
 		return getNextHop(list,dest);
 	}
 
