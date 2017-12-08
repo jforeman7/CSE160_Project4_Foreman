@@ -421,6 +421,7 @@ implementation
 						}
 						
 						tempChat.usernameLength = j;
+						printf("Username length is: %d\n", tempChat.usernameLength); 
 						
 						DATA.src = TOS_NODE_ID;
 						DATA.dest = myMsg->src;
