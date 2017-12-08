@@ -222,7 +222,7 @@ implementation
 						
 						call SocketList.pushback(tempSocket);
 						
-						dbg(TRANSPORT_CHANNEL, "SYN packet being sent to %d, intended for Node %d.\n", sendTo, addr->addr);                                                                                                       
+						dbg(TRANSPORT_CHANNEL, "Sending to: %d\n", sendTo);                                                                                                    
 						
 
 						dbg(TRANSPORT_CHANNEL, "Sending SYN Packet.\n");
