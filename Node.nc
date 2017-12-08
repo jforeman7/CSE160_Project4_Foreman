@@ -31,13 +31,13 @@ typedef struct lspMap
 
 typedef nx_struct chatMessage
 {
-	nx_uint8_t flag;
+	int flag;
 	
-	nx_uint8_t message[50];
-	nx_uint8_t msgLength;
+	int message[50];
+	int msgLength;
 	
-	nx_uint8_t username[50];
-	nx_uint8_t usernameLength;
+	int username[50];
+	int usernameLength;
 }chatMessage;
 
 // Sequence number of this node.
@@ -58,9 +58,9 @@ uint16_t DPM;
 uint16_t destinationM;
 
 //Project 4 Var: 
-char username[50];
-char message[100];
-char dest[50];
+int username[50];
+int message[100];
+int dest[50];
 
 module Node
 {
@@ -189,7 +189,7 @@ implementation
 				{
 					dbg(TRANSPORT_CHANNEL, "Adding client username: ");
 					
-					printf("%c\n", receivedChat->username[0]);
+					printf("%d\n", receivedChat->username[0]);
 				}
 			}
 			
