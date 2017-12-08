@@ -760,7 +760,7 @@ implementation
 		
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
 		{
-			call Transport.connect(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
+			call Transport.connectChatClient(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
 		}
 	
 	}
