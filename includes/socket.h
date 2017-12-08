@@ -61,6 +61,9 @@ typedef struct socketStruct
 {
 	socket_t fd;
 	socket_store_t socketState;
+	char username[50];
+	char message[100];
+	uint8_t msgFlag;
 }socketStruct;
 
 #endif
