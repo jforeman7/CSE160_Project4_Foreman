@@ -136,7 +136,12 @@ class TestSim:
         self.sendCMD(self.CMD_TEST_CLIENT, address, "{0}{1}{2}{3}".format(chr(sourcePort), chr(destPort), chr(dest), chr(bufflen)));
    # event void CommandHandler.TestClose(uint16_t dest, uint16_t destPort)
     def TestClose(self,address, dest, destPort): 
-        self.sendCMD(self.CMD_TEST_CLOSE, address, "{0}{1}".format(chr(dest), chr(destPort)));  
+        self.sendCMD(self.CMD_TEST_CLOSE, address, "{0}{1}".format(chr(dest), chr(destPort)));
+        
+    def AppServer(self, address):
+        self.sendCMD(self.CMD_APP_SERVER, address);
+    
+    
 def main():
     s = TestSim();
     s.runTime(20);
@@ -166,15 +171,16 @@ def main():
     s.ping(9, 10, "Hello, World");
     s.runTime(100);
     
-    s.TestServer(1, 80);
+    #s.TestServer(1, 80);
+    s.AppServer(1);
     
     s.runTime(15);
     
-    s.TestClient(2, 50, 80, 1, 255);
+    #s.TestClient(2, 50, 80, 1, 255);
     
     s.runTime(150);
     
-    s.TestClose(2, 1, 80);
+    #s.TestClose(2, 1, 80);
     
     s.runTime(15)
     #s.neighborDMP(3);
