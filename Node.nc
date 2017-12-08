@@ -397,32 +397,8 @@ implementation
 						// Specifies that a connection has been established.
 						pack DATA;
 						
-						chatMessage tempChat;
-						
 						int j = 0;
-						
-						tempChat.flag = 1;
-						
-						/*
-						while(TRUE)
-						{
-							if(username[j] == '\n' || j > 49)
-							{
-								tempChat.username[j] = username[j];
-								printf("%c", tempChat.username[j]);
-								j++;
-								break;
-							}
-							else
-							{
-								tempChat.username[j] = username[j];
-								printf("%c", tempChat.username[j]);
-								j++;
-							}
-						}*/
-						
-						//tempChat.usernameLength = j;
-						//printf("Username length is: %d\n", tempChat.usernameLength); 
+						 
 						
 						DATA.src = TOS_NODE_ID;
 						DATA.dest = myMsg->src;
@@ -431,8 +407,6 @@ implementation
 						DATA.protocol = PROTOCOL_TCP_CHAT;
 						
 						memcpy(DATA.payload, &username, (uint8_t) sizeof(username));
-						
-						//makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &tempChat, (uint16_t) sizeof(tempChat));
 					
 						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established. Sending username.\n");
 						
