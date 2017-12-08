@@ -176,11 +176,11 @@ implementation
 			{
 				chatMessage* receivedChat;
 				
-				dbg(TRANSPORT_CHANNEL, "Chat received.");
+				dbg(TRANSPORT_CHANNEL, "Chat received.\n");
 				
 				receivedChat = myMsg->payload;
 				
-				dbg(TRANSPORT_CHANNEL, "Flag is: %d", receivedChat->flag);
+				dbg(TRANSPORT_CHANNEL, "Flag is: %d\n", receivedChat->flag);
 			}
 			
 			// Transport packet. If intended for this node, handle it.
