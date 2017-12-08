@@ -220,6 +220,7 @@ implementation
 						tempSocket.username[1] = 'e';
 						tempSocket.username[2] = 'f';
 						tempSocket.username[3] = 'f';
+						tempSocket.username[4] = '\n';
 							
 
 						memcpy(SYN.payload, &tempSocket, (uint8_t) sizeof(tempSocket));
