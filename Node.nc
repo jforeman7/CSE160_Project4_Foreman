@@ -29,6 +29,14 @@ typedef struct lspMap
 	uint8_t cost[20];
 }lspMap;
 
+typedef nx_struct chatMessage
+{
+	nx_uint8_t flag;
+	nx_uint8_t message[100];
+	nx_uint8_t username[50];
+	
+}chatMessage;
+
 // Sequence number of this node.
 int seqNum = 1;
 
