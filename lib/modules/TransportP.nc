@@ -173,7 +173,7 @@ implementation
 	
 	
 	// A special TCP connect function for the Chat Client.
-	command error_t Transport.connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table, char* username)
+	command error_t Transport.connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table, char* username, int length)
 	{
 		return FAIL;
 	}
