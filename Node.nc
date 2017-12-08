@@ -277,7 +277,7 @@ implementation
 			else if(myMsg->protocol == PROTOCOL_TCP_MSG_CLIENT && myMsg->dest == TOS_NODE_ID)
 			{
 				int i;
-				dbg(TRANSPORT_CHANNEL, "Message received from client.\n");
+				dbg(TRANSPORT_CHANNEL, "Message received from server.\n");
 				
 				dbg(TRANSPORT_CHANNEL, "Message: ");
 				i = 0;
