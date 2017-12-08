@@ -29,7 +29,7 @@ typedef struct lspMap
 	uint8_t cost[20];
 }lspMap;
 
-typedef nx_struct chatMessage
+typedef struct chatMessage
 {
 	int flag;
 	
