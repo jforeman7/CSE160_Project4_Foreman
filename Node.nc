@@ -33,13 +33,13 @@ typedef nx_struct chatMessage
 {
 	nx_int8_t flag;
 	
-	nx_int32_t* message;
+	nx_int32_t message;
 	nx_int8_t msgLength;
 	
-	nx_int32_t* username;
+	nx_int32_t username;
 	nx_int8_t usernameLength;
 	
-	nx_int32_t* dest;
+	nx_int32_t dest;
 	nx_int8_t destLength;
 	
 }chatMessage;
