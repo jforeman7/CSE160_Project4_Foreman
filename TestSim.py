@@ -184,7 +184,7 @@ def main():
     
     s.runTime(15);
     
-    s.AppClient(1, "jeff");
+    s.AppClient(1, "jeff\r\n");
     #s.TestClient(2, 50, 80, 1, 255);
     
     s.runTime(15);
