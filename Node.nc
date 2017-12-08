@@ -755,6 +755,7 @@ implementation
 		address.port = 80;
 		address.addr = TOS_NODE_ID;
 		
+		dbg(TRANSPORT_CHANNEL, "Setting up chat client.\n");
 		while(TRUE)
 		{
 			if(usrnm[i] == '\n')
@@ -770,11 +771,12 @@ implementation
 			}
 		}
 		
+		/*
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
 		{
 			call Transport.connectChatClient(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
 		}
-	
+		*/
 	}
 	
 	event void CommandHandler.message(char *mssg)
