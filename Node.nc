@@ -174,7 +174,16 @@ implementation
 			
 			else if(myMsg->protocol == PROTOCOL_TCP_CHAT && myMsg->dest == TOS_NODE_ID)
 			{
-				dbg(TRANSPORT_CHANNEL, "Chat DATA packet received.\n");
+				chatMessage* receivedChat;
+				
+				dbg(TRANSPORT_CHANNEL, "Chat received.");
+				
+				receivedChat = myMsg->payload;
+				
+				if(receivedChat->flag == 1)
+				{
+					dbg(TRANSPORT_CHANNEL, "Username received.");
+				}
 			}
 			
 			// Transport packet. If intended for this node, handle it.
@@ -379,9 +388,25 @@ implementation
 						// Specifies that a connection has been established.
 						pack DATA;
 						
-						int lol = 0;
+						chatMessage tempChat;
+						tempChat.flag = 1;
 						
-						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &lol, (uint8_t) sizeof(lol));
+						while(TRUE)
+						{
+							if(username[i] == '\n')
+							{
+								tempChat.username[i] = username[i];
+								i++;
+								break;
+							}
+							else
+							{
+								tempChat.username[i] = username[i];
+								i++;
+							}
+						}
+						
+						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &tempChat, (uint8_t) sizeof(tempChat));
 					
 						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established.\n");
 						
