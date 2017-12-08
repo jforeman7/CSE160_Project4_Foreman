@@ -211,7 +211,6 @@ implementation
 					if(fd == tempSocket.fd)
 					{
 						tempSocket = call SocketList.remove(j);
-						tempSocket.socketState.bufflen = bufflen;
 						tempSocket.socketState.state = SYN_SENT;
 						tempSocket.socketState.flag = 8;
 						
