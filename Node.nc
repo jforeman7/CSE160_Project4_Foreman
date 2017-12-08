@@ -23,11 +23,11 @@ typedef nx_struct neighbor
 	nx_uint8_t Life;
 }neighbor;
 
-typedef nx_struct chatMessage
+typedef struct chatMessage
 {
 	char message[100];
 	char username[50];
-	nx_uint8_t flag;
+	int flag;
 }chatMessage;
 
 //Creates a Map of all the Nodes
