@@ -53,7 +53,7 @@ uint16_t destinationM;
 
 //Project 4 Var: 
 char username[50];
-char chatMessage[50];
+int chatMessage[50];
 char dest[50];
 
 chatClient user[20];
@@ -850,7 +850,21 @@ implementation
 			}
 		}
 		
-		
+		i = 0;
+		while(TRUE)
+		{
+			if(chatMessage[i] == '\n')
+			{
+				printf("%c", chatMessage[i]);
+				i++;
+				break;
+			}
+			else
+			{
+				printf("%c", chatMessage[i]);
+				i++;
+			}
+		}
 						
 		DATA.src = TOS_NODE_ID;
 		DATA.dest = 1;
@@ -858,9 +872,8 @@ implementation
 		DATA.TTL = MAX_TTL;
 		DATA.protocol = PROTOCOL_TCP_MSG;
 
-		//memcpy(DATA.payload, &chatMessage, (uint8_t) sizeof(chatMessage));
-		memcpy(DATA.payload, &username, (uint8_t) sizeof(username));
-		memcpy(DATA.payload, &dest, (uint8_t) sizeof(dest));
+		memcpy(DATA.payload, &chatMessage, (uint8_t) sizeof(chatMessage));
+		
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 		
 		call Sender.send(DATA, forwardPacketTo(&confirmedList, 1));
