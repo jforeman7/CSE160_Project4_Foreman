@@ -55,9 +55,9 @@ uint16_t DPM;
 uint16_t destinationM;
 
 //Project 4 Var: 
-int username[50];
-int message[100];
-int dest[50];
+char username[50];
+char message[100];
+char dest[50];
 
 module Node
 {
