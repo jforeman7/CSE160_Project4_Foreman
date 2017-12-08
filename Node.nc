@@ -213,7 +213,7 @@ implementation
 				
 				while(TRUE)
 					{
-						if(i > 25)
+						if(myMsg->payload[i] == '\n')
 						{
 							printf("%c", myMsg->payload[i]);
 							i++;
