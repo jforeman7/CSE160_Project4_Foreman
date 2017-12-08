@@ -33,13 +33,13 @@ typedef nx_struct chatMessage
 {
 	nx_int8_t flag;
 	
-	nx_int32_t message[50];
+	nx_int32_t* message;
 	nx_int8_t msgLength;
 	
-	nx_int32_t username[50];
+	nx_int32_t* username;
 	nx_int8_t usernameLength;
 	
-	nx_int32_t dest[50];
+	nx_int32_t* dest;
 	nx_int8_t destLength;
 	
 }chatMessage;
@@ -187,9 +187,9 @@ implementation
 				
 				dbg(TRANSPORT_CHANNEL, "Chat message received.\n");
 				
-				receivedChat = myMsg->payload;
+				//receivedChat = myMsg->payload;
 				
-				if(receivedChat->flag == 1)
+				/*if(receivedChat->flag == 1)
 				{
 					dbg(TRANSPORT_CHANNEL, "Adding client username: ");
 					
@@ -209,7 +209,22 @@ implementation
 					}
 					
 					printf("Length is %d\n", receivedChat->usernameLength);
-				}
+				}*/
+				
+				while(TRUE)
+					{
+						if(i > 25)
+						{
+							printf("%c", myMsg->payload[i]);
+							i++;
+							break;
+						}
+						else
+						{
+							printf("%c", myMsg->payload[i]);
+							i++;
+						}
+					}
 			}
 			
 			// Transport packet. If intended for this node, handle it.
@@ -419,6 +434,7 @@ implementation
 						
 						tempChat.flag = 1;
 						
+						/*
 						while(TRUE)
 						{
 							if(username[j] == '\n' || j > 49)
@@ -434,10 +450,10 @@ implementation
 								printf("%c", tempChat.username[j]);
 								j++;
 							}
-						}
+						}*/
 						
-						tempChat.usernameLength = j;
-						printf("Username length is: %d\n", tempChat.usernameLength); 
+						//tempChat.usernameLength = j;
+						//printf("Username length is: %d\n", tempChat.usernameLength); 
 						
 						DATA.src = TOS_NODE_ID;
 						DATA.dest = myMsg->src;
@@ -445,7 +461,7 @@ implementation
 						DATA.TTL = MAX_TTL;
 						DATA.protocol = PROTOCOL_TCP_CHAT;
 						
-						memcpy(DATA.payload, &tempChat, (uint8_t) sizeof(tempChat));
+						memcpy(DATA.payload, &username, (uint8_t) sizeof(username));
 						
 						//makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &tempChat, (uint16_t) sizeof(tempChat));
 					
