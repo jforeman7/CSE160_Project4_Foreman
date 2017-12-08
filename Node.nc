@@ -189,7 +189,7 @@ implementation
 				{
 					dbg(TRANSPORT_CHANNEL, "Adding client username: ");
 					
-					printf("%c\n", receivedChat->username[0];
+					printf("%c\n", receivedChat->username[0]);
 				}
 			}
 			
