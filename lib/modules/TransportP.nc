@@ -201,7 +201,7 @@ implementation
 		{
 			if(Table->lspEntries[i].dest == SYN.dest)
 			{
-				nextHop = 1;//Table->lspEntries[i].nextHop;
+				nextHop = 1;  //Table->lspEntries[i].nextHop;
 				
 				// Modify the Socket State.
 				for(j = 0; j < call SocketList.size(); j++)
@@ -210,6 +210,8 @@ implementation
 					
 					if(fd == tempSocket.fd)
 					{
+						nextHop = 1;
+						
 						tempSocket = call SocketList.remove(j);
 						tempSocket.socketState.state = SYN_SENT;
 						tempSocket.socketState.flag = 8;
@@ -220,7 +222,7 @@ implementation
 						
 						call SocketList.pushback(tempSocket);
 						
-						dbg(TRANSPORT_CHANNEL, "SYN packet being sent to nextHop %d, intended for Node %d.\n",nextHop, addr->addr);                                                                                                       
+						dbg(TRANSPORT_CHANNEL, "SYN packet being sent to nextHop %d, intended for Node %d.\n", nextHop, addr->addr);                                                                                                       
 						
 
 						dbg(TRANSPORT_CHANNEL, "Sending SYN Packet.\n");
