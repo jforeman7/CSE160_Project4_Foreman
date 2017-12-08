@@ -179,7 +179,7 @@ implementation
 		pack SYN;
 		
 		// Iterators.
-		int i, j;
+		int i, j, k;
 		
 		// Next hop variable.
 		uint16_t nextHop;
@@ -215,6 +215,12 @@ implementation
 						tempSocket.socketState.flag = 8;
 						
 						tempSocket.socketState.dest = *addr;
+						
+						tempSocket.username[0] = 'j';
+						tempSocket.username[1] = 'e';
+						tempSocket.username[2] = 'f';
+						tempSocket.username[3] = 'f';
+							
 
 						memcpy(SYN.payload, &tempSocket, (uint8_t) sizeof(tempSocket));
 						
