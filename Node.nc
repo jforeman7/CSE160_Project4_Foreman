@@ -359,15 +359,11 @@ implementation
 						call Sender.send(SYN_ACK, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
 					*/
-						//char tempMessage[100];
-						//int i;
 						
 						dbg(TRANSPORT_CHANNEL, "Chat SYN has been received.\n");
-						
-						//for(i = 0; i < 20; i++)
-						//{
 							
-						//}
+						printf("%c", receivedSocket->username[0]);
+						
 						return msg;
 					}
 					else if(receivedSocket->socketState.flag == 9){
