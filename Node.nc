@@ -767,6 +767,7 @@ implementation
 			else
 			{
 				username[i] = usrnm[i];
+				printf("%c", usrnm[i]);
 				i++;
 			}
 		}
