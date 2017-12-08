@@ -274,6 +274,23 @@ implementation
 			else if(myMsg->protocol == PROTOCOL_TCP_MSG_CLIENT && myMsg->dest == TOS_NODE_ID)
 			{
 				dbg(TRANSPORT_CHANNEL, "Message received from client.\n");
+				
+				dbg(TRANSPORT_CHANNEL, "Message: ");
+				i = 0;
+				while(TRUE)
+				{
+					if(myMsg->payload[i] == '\n')
+					{
+						printf("%c", myMsg->payload[i]);
+						i++;
+						break;
+					}
+					else
+					{
+						printf("%c", myMsg->payload[i]);
+						i++;
+					}
+				}
 			}
 			
 			// Transport packet. If intended for this node, handle it.
