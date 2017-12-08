@@ -828,7 +828,8 @@ implementation
 	event void CommandHandler.message(char* mssg)
 	{
 	
-		pack DATA;
+		pack message;
+		
 		// Iterator.
 		int i;
 		
@@ -849,34 +850,18 @@ implementation
 				i++;
 			}
 		}
-		
-		i = 0;
-		while(TRUE)
-		{
-			if(chatMessage[i] == '\n')
-			{
-				printf("%c", chatMessage[i]);
-				i++;
-				break;
-			}
-			else
-			{
-				printf("%c", chatMessage[i]);
-				i++;
-			}
-		}
 						
-		DATA.src = TOS_NODE_ID;
-		DATA.dest = 1;
-		DATA.seq = 1;
-		DATA.TTL = MAX_TTL;
-		DATA.protocol = PROTOCOL_TCP_MSG;
+		message.src = TOS_NODE_ID;
+		message.dest = 1;
+		message.seq = 1;
+		message.TTL = MAX_TTL;
+		message.protocol = PROTOCOL_TCP_MSG;
 
-		memcpy(DATA.payload, &chatMessage, (uint8_t) sizeof(chatMessage));
+		memcpy(message.payload, &chatMessage, (uint8_t) sizeof(chatMessage));
 		
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 		
-		call Sender.send(DATA, forwardPacketTo(&confirmedList, 1));
+		call Sender.send(message, forwardPacketTo(&confirmedList, 1));
 	}
 	
 	event void CommandHandler.whisper(char* destination, char* msg)
