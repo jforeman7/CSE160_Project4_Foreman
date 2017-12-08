@@ -358,7 +358,7 @@ implementation
 						call Sender.send(SYN_ACK, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
 					}
-					else if(recievedSocket->socketState.flag == 9){
+					else if(receivedSocket->socketState.flag == 9){
 					// Packet to reply to the SYN_ACK.
 						// Specifies that a connection has been established.
 						pack ACK;
