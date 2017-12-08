@@ -351,7 +351,7 @@ implementation
 						// Make the SYN_ACK.
 						makePack(&SYN_ACK, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &tempSocket, (uint8_t) sizeof(tempSocket));
 						
-						dbg(TRANSPORT_CHANNEL, "Chat client SYN packet received from Node %d port %d, replying with SYN_ACK.\n", myMsg->src, receivedSocket->socketState.src);
+						dbg(TRANSPORT_CHANNEL, "The Chat Server has received a SYN packet from Chat Client Node %d port %d, replying with SYN_ACK.\n", myMsg->src, receivedSocket->socketState.src);
 						
 						// Send out the SYN_ACK.
 						call Sender.send(SYN_ACK, forwardPacketTo(&confirmedList, myMsg->src));
