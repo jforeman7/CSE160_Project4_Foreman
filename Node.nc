@@ -179,21 +179,45 @@ implementation
 				dbg(TRANSPORT_CHANNEL, "Username received: ");
 				
 				while(TRUE)
+				{
+					if(myMsg->payload[i] == '\n')
 					{
-						if(myMsg->payload[i] == '\n')
-						{
-							user[myMsg->src].username[i] = myMsg->payload[i];
-							printf("%c", user[myMsg->src].username[i]);
-							i++;
-							break;
-						}
-						else
-						{
-							user[myMsg->src].username[i] = myMsg->payload[i];
-							printf("%c", user[myMsg->src].username[i]);
-							i++;
-						}
+						user[myMsg->src].username[i] = myMsg->payload[i];
+						printf("%c", user[myMsg->src].username[i]);
+						i++;
+						break;
 					}
+					else
+					{
+						user[myMsg->src].username[i] = myMsg->payload[i];
+						printf("%c", user[myMsg->src].username[i]);
+						i++;
+					}
+				}
+			}
+			
+			else if(myMsg->protocol == PROTOCOL_TCP_MSG && myMsg->dest == TOS_NODE_ID)
+			{
+				int i = 0;
+				
+				dbg(TRANSPORT_CHANNEL, "Message received from client: ");
+				
+				while(TRUE)
+				{
+					if(myMsg->payload[i] == '\n')
+					{
+						user[myMsg->src].username[i] = myMsg->payload[i];
+						printf("%c", user[myMsg->src].username[i]);
+						i++;
+						break;
+					}
+					else
+					{
+						user[myMsg->src].username[i] = myMsg->payload[i];
+						printf("%c", user[myMsg->src].username[i]);
+						i++;
+					}
+				}
 			}
 			
 			// Transport packet. If intended for this node, handle it.
@@ -808,32 +832,30 @@ implementation
 			if(mssg[i] == '\n')
 			{
 				message[i] = mssg[i];
-				printf("%c\n", mssg[i]);
 				i++;
 				break;
 			}
 			else
 			{
 				message[i] = mssg[i];
-				printf("%c", mssg[i]);
 				i++;
 			}
 		}
-		i = 0;
-		while(TRUE)
-		{
-			if(message[i] == '\n')
-			{
-				printf("%c\n", message[i]);
-				i++;
-				break;
-			}
-			else
-			{
-				printf("%c", message[i]);
-				i++;
-			}
-		}
+		
+		pack DATA;
+						
+		DATA.src = TOS_NODE_ID;
+		DATA.dest = myMsg->src;
+		DATA.seq = 1;
+		DATA.TTL = MAX_TTL;
+		DATA.protocol = PROTOCOL_TCP_MSG;
+
+		memcpy(DATA.payload, &message, (uint8_t) sizeof(message));
+
+		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
+
+		// Send out the Username.
+		call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
 		
 	}
 	
