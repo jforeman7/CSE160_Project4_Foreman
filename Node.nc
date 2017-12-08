@@ -23,13 +23,6 @@ typedef nx_struct neighbor
 	nx_uint8_t Life;
 }neighbor;
 
-typedef nx_struct chatMessage
-{
-	nx_uint8_t message[100];
-	nx_uint8_t username[50];
-	nx_uint8_t flag;
-}chatMessage;
-
 //Creates a Map of all the Nodes
 typedef struct lspMap
 {
