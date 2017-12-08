@@ -858,7 +858,7 @@ implementation
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 
 		// Send out the Username.
-		call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
+		call Sender.send(DATA, forwardPacketTo(&confirmedList, DATA.dest));
 		
 	}
 	
