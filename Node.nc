@@ -852,14 +852,14 @@ implementation
 		
 		
 						
-		//DATA.src = TOS_NODE_ID;
-		//DATA.dest = dest;
-		//DATA.seq = 1;
-		//DATA.TTL = MAX_TTL;
-		//DATA.protocol = PROTOCOL_TCP_MSG;
+		DATA.src = TOS_NODE_ID;
+		DATA.dest = 1;
+		DATA.seq = 1;
+		DATA.TTL = MAX_TTL;
+		DATA.protocol = PROTOCOL_TCP_MSG;
 
 		//memcpy(DATA.payload, &chatMessage, (uint8_t) sizeof(chatMessage));
-		makePack(&DATA, TOS_NODE_ID, 1, MAX_TTL, PROTOCOL_TCP_MSG, 1, &chatMessage, (uint8_t) sizeof(chatMessage));
+		memcpy(DATA.payload, &dest, (uint8_t) sizeof(dest));
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 		
 		call Sender.send(DATA, forwardPacketTo(&confirmedList, 1));
