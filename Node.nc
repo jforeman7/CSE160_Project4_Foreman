@@ -23,11 +23,11 @@ typedef nx_struct neighbor
 	nx_uint8_t Life;
 }neighbor;
 
-typedef struct chatMessage
+typedef nx_struct chatMessage
 {
-	char message[100];
-	char username[50];
-	int flag;
+	nx_uint8_t message[100];
+	nx_uint8_t username[50];
+	nx_uint8_t flag;
 }chatMessage;
 
 //Creates a Map of all the Nodes
@@ -55,8 +55,8 @@ uint16_t destinationM;
 
 //Project 4 Var: 
 int username[50];
-char message[100];
-char dest[50];
+int message[100];
+int dest[50];
 
 module Node
 {
@@ -789,24 +789,9 @@ implementation
 			}
 		}
 		
-		while(TRUE)
-		{
-			if (username[j] == '\0' || j == i - 1)
-			{
-				printf("%c", username[j]);
-				printf("\n");
-				break;
-			}
-			else
-			{
-				printf("%c", username[j]);
-				j++;
-			}
-		}
-		
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
 		{
-			//call Transport.connectChatClient(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
+			call Transport.connectChatClient(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
 		}
 	}
 	
