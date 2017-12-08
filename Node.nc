@@ -405,7 +405,7 @@ implementation
 						
 						while(TRUE)
 						{
-							if(username[i] == '\n')
+							if(username[i] == '\n' || j > 49)
 							{
 								tempChat.username[i] = username[i];
 								j++;
