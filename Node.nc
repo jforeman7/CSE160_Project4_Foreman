@@ -848,7 +848,7 @@ implementation
 		
 						
 		DATA.src = TOS_NODE_ID;
-		DATA.dest = myMsg->src;
+		DATA.dest = 1;
 		DATA.seq = 1;
 		DATA.TTL = MAX_TTL;
 		DATA.protocol = PROTOCOL_TCP_MSG;
