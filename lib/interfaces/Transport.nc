@@ -21,6 +21,7 @@ interface Transport{
 
    command socketStruct getSocket(socket_t fd);
    command error_t setSocket(socket_t fd, socketStruct update);
+   command error_t connectChatClient(socket_t fd, socket_addr_t *addr, lspTable* Table, char* username);
 
    /**
     * Get a socket if there is one available.
