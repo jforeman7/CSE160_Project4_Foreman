@@ -25,8 +25,8 @@ typedef nx_struct neighbor
 
 typedef nx_struct chatMessage
 {
-	nx_char message[100];
-	nx_char username[50];
+	char message[100];
+	char username[50];
 	nx_uint8_t flag;
 }chatMessage;
 
