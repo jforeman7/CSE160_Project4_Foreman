@@ -342,7 +342,7 @@ implementation
 					else if(receivedSocket->socketState.flag == 8){ //SYN from chat client 
 					// Conditions hold true, reply with a SYN_ACK.
 						// Update the state of the Socket.
-						tempSocket.socketState.flag = 2;
+						tempSocket.socketState.flag = 9;
 						tempSocket.socketState.dest.port = receivedSocket->socketState.src;
 						tempSocket.socketState.dest.addr = myMsg->src;
 						tempSocket.socketState.state = SYN_RCVD;
@@ -367,7 +367,7 @@ implementation
 						tempSocket = call Transport.getSocket(i);
 						
 						// Update the state of the Socket.
-						tempSocket.socketState.flag = 7;
+						tempSocket.socketState.flag = 10;
 						tempSocket.socketState.dest.port = receivedSocket->socketState.src;
 						tempSocket.socketState.dest.addr = myMsg->src;
 						tempSocket.socketState.state = ESTABLISHED;
