@@ -374,7 +374,7 @@ implementation
 						
 						int lol = 0;
 						
-						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &lol, (uint8_t) sizeof(lol));
+						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &lol, (uint8_t) sizeof(lol));
 					
 						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established.\n");
 						
