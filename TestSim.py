@@ -169,6 +169,9 @@ def main():
     #s.addChannel(s.ROUTING_CHANNEL);
     s.addChannel(s.TRANSPORT_CHANNEL);
     
+    s.runTime(15);
+    s.AppClient(1, "jeff\r\n");
+    
     s.runTime(100);
     s.ping(1, 2, "Hello, World");
     s.runTime(100);
@@ -184,7 +187,7 @@ def main():
     
     s.runTime(15);
     
-    s.AppClient(1, "jeff\r\n");
+    #s.AppClient(1, "jeff\r\n");
     #s.TestClient(2, 50, 80, 1, 255);
     
     s.runTime(15);
