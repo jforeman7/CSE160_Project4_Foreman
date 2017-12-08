@@ -206,23 +206,38 @@ implementation
 				
 				dbg(TRANSPORT_CHANNEL, "Message received from client: ");
 				
-				/*
 				while(TRUE)
 				{
-					if(myMsg->payload[i] == '\n')
+					if(user[myMsg->src].username[i] == '\n')
 					{
-						user[myMsg->src].username[i] = myMsg->payload[i];
 						printf("%c", user[myMsg->src].username[i]);
 						i++;
 						break;
 					}
 					else
 					{
-						user[myMsg->src].username[i] = myMsg->payload[i];
 						printf("%c", user[myMsg->src].username[i]);
 						i++;
 					}
-				}*/
+				}
+				
+				dbg(TRANSPORT_CHANNEL, "Message: ");
+				i = 0;
+				while(TRUE)
+				{
+					if(myMsg->payload[i] == '\n')
+					{
+						printf("%c", myMsg->payload[i];
+						i++;
+						break;
+					}
+					else
+					{
+						printf("%c", myMsg->payload[i]);
+						i++;
+					}
+				}
+				
 			}
 			
 			// Transport packet. If intended for this node, handle it.
