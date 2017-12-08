@@ -53,7 +53,7 @@ uint16_t destinationM;
 
 //Project 4 Var: 
 char username[50];
-char chatMessage[50];
+char message[50];
 char dest[50];
 
 chatClient user[10];
@@ -807,14 +807,14 @@ implementation
 		{
 			if(mssg[i] == '\n')
 			{
-				chatMessage[i] = mssg[i];
+				message[i] = mssg[i];
 				printf("%c\n", mssg[i]);
 				i++;
 				break;
 			}
 			else
 			{
-				chatMessage[i] = mssg[i];
+				message[i] = mssg[i];
 				printf("%c", mssg[i]);
 				i++;
 			}
