@@ -166,10 +166,10 @@ def main():
     s.runTime(100);
     s.ping(2, 1, "Hello, World");
     s.runTime(100);
-    s.ping(3, 4, "Hello, World");
+    s.ping(3, 2, "Hello, World");
     s.runTime(100);
-    s.ping(9, 10, "Hello, World");
-    s.runTime(100);
+    #s.ping(9, 10, "Hello, World");
+    #s.runTime(100);
     
     #s.TestServer(1, 80);
     s.AppServer(1);
@@ -178,11 +178,11 @@ def main():
     
     #s.TestClient(2, 50, 80, 1, 255);
     
-    s.runTime(150);
+    s.runTime(15);
     
     #s.TestClose(2, 1, 80);
     
-    s.runTime(15)
+    #s.runTime(15)
     #s.neighborDMP(3);
     #i=0;
     #for i in range(1, s.numMote+1):
