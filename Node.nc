@@ -798,7 +798,7 @@ implementation
 		}
 	}
 	
-	event void CommandHandler.message(char *mssg)
+	event void CommandHandler.message(char* mssg)
 	{
 		// Iterator.
 		int i = 0;
