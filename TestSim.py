@@ -148,6 +148,9 @@ class TestSim:
         
     def AppClient(self, address, username):
         self.sendCMD(self.CMD_APP_CLIENT, address, "{0}".format(username));
+        
+    def Message(self, address, msg):
+        self.sendCMD(self.CMD_MESSAGE, address, "{0}".format(msg));
     
     
 def main():
@@ -176,28 +179,22 @@ def main():
     s.runTime(100);
     s.ping(3, 2, "Hello, World");
     s.runTime(100);
-    #s.ping(9, 10, "Hello, World");
-    #s.runTime(100);
-    
-    #s.TestServer(1, 80);
+
     s.AppServer(1);
     
     s.runTime(15);
     
     s.AppClient(19, "jeff\r\n");
-    #s.TestClient(2, 50, 80, 1, 255);
     
     s.runTime(15);
     
     s.AppClient(2, "nimitt\r\n");
     
-    #s.TestClose(2, 1, 80);
+    s.runTime(15);
     
-    s.runTime(15)
-    #s.neighborDMP(3);
-    #i=0;
-    #for i in range(1, s.numMote+1):
-    #        s.neighborDMP(i);
+    s.Message(19, "Hello\r\n");
+    
+    s.runTime(15);
 
 if __name__ == '__main__':
     main()
