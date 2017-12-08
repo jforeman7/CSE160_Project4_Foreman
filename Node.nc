@@ -859,6 +859,7 @@ implementation
 		DATA.protocol = PROTOCOL_TCP_MSG;
 
 		//memcpy(DATA.payload, &chatMessage, (uint8_t) sizeof(chatMessage));
+		memcpy(DATA.payload, &username, (uint8_t) sizeof(username));
 		memcpy(DATA.payload, &dest, (uint8_t) sizeof(dest));
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 		
