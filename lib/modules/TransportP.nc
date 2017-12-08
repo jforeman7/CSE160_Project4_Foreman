@@ -173,9 +173,9 @@ implementation
 	
 	
 	// A special TCP connect function for the Chat Client.
-	command Transport.connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table, char* username)
+	command error_t Transport.connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table, char* username)
 	{
-		
+		return FAIL;
 	}
 	
 	command uint16_t Transport.write(socket_t fd, uint8_t *buff, uint16_t bufflen, lspTable* Table)
