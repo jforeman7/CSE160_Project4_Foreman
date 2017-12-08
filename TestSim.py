@@ -144,7 +144,7 @@ class TestSim:
         self.sendCMD(self.CMD_TEST_CLOSE, address, "{0}{1}".format(chr(dest), chr(destPort)));
         
     def AppServer(self, address):
-        self.sendCMD(self.CMD_APP_SERVER, address);
+        self.sendCMD(self.CMD_APP_SERVER, address, "app server command");
     
     
 def main():
