@@ -194,6 +194,8 @@ implementation
 						i++;
 					}
 				}
+				
+				return msg;
 			}
 			
 			else if(myMsg->protocol == PROTOCOL_TCP_MSG && myMsg->dest == TOS_NODE_ID)
@@ -851,7 +853,7 @@ implementation
 		
 						
 		DATA.src = TOS_NODE_ID;
-		DATA.dest = 1;
+		DATA.dest = dest;
 		DATA.seq = 1;
 		DATA.TTL = MAX_TTL;
 		DATA.protocol = PROTOCOL_TCP_MSG;
@@ -861,7 +863,6 @@ implementation
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 		
 		call Sender.send(DATA, forwardPacketTo(&confirmedList, 1));
-		
 	}
 	
 	event void CommandHandler.whisper(char* destination, char* msg)
