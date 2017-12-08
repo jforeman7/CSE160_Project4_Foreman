@@ -214,7 +214,7 @@ implementation
 						
 						tempSocket = call SocketList.remove(j);
 						tempSocket.socketState.state = SYN_SENT;
-						tempSocket.socketState.flag = 8;
+						tempSocket.socketState.flag = 1;
 						
 						tempSocket.socketState.dest = *addr;
 
