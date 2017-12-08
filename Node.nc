@@ -53,7 +53,9 @@ uint16_t destinationM;
 
 //Project 4 Var: 
 char username[50];
-int chatMessage[50];
+
+int chatMessage[25];
+
 char dest[50];
 
 chatClient user[20];
@@ -830,6 +832,8 @@ implementation
 	
 		pack message;
 		
+		char chat[25];
+		
 		// Iterator.
 		int i;
 		
@@ -840,13 +844,13 @@ implementation
 		{
 			if(mssg[i] == '\n')
 			{
-				chatMessage[i] = mssg[i];
+				chat[i] = mssg[i];
 				i++;
 				break;
 			}
 			else
 			{
-				chatMessage[i] = mssg[i];
+				chat[i] = mssg[i];
 				i++;
 			}
 		}
@@ -857,7 +861,7 @@ implementation
 		message.TTL = MAX_TTL;
 		message.protocol = PROTOCOL_TCP_MSG;
 
-		memcpy(message.payload, &chatMessage, (uint8_t) sizeof(chatMessage));
+		memcpy(message.payload, &chat, (uint8_t) sizeof(chat));
 		
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 		
