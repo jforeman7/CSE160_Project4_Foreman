@@ -32,8 +32,15 @@ typedef struct lspMap
 typedef struct chatMessage
 {
 	int flag;
+	
 	char message[100];
+	int msgLength;
+	
 	char username[50];
+	int usernameLength;
+	
+	char destination[50];
+	int destLength;
 	
 }chatMessage;
 
@@ -176,12 +183,21 @@ implementation
 			else if(myMsg->protocol == PROTOCOL_TCP_CHAT && myMsg->dest == TOS_NODE_ID)
 			{
 				chatMessage* receivedChat;
+				int i = 0;
 				
-				dbg(TRANSPORT_CHANNEL, "Chat received.\n");
+				dbg(TRANSPORT_CHANNEL, "Chat message received.\n");
 				
 				receivedChat = myMsg->payload;
 				
-				dbg(TRANSPORT_CHANNEL, "Flag is: %d\n", receivedChat->flag);
+				if(receivedChat->flag == 1)
+				{
+					dbg(TRANSPORT_CHANNEL, "Adding client username: ");
+					
+					for(i = 0; i < receivedChat->usernameLength; i++)
+					{
+						printf("%c", receivedChat->username[i]);
+					}
+				}
 			}
 			
 			// Transport packet. If intended for this node, handle it.
@@ -388,22 +404,26 @@ implementation
 						
 						chatMessage tempChat;
 						
+						int j = 0;
+						
 						tempChat.flag = 1;
 						
-						/*while(TRUE)
+						while(TRUE)
 						{
 							if(username[i] == '\n')
 							{
 								tempChat.username[i] = username[i];
-								i++;
+								j++;
 								break;
 							}
 							else
 							{
 								tempChat.username[i] = username[i];
-								i++;
+								j++;
 							}
-						}*/
+						}
+						
+						tempChat.usernameLength = j;
 						
 						DATA.src = TOS_NODE_ID;
 						DATA.dest = myMsg->src;
