@@ -824,6 +824,9 @@ implementation
 	
 	event void CommandHandler.message(char* mssg)
 	{
+	
+		pack DATA;
+		
 		// Iterator.
 		int i = 0;
 		
@@ -842,7 +845,7 @@ implementation
 			}
 		}
 		
-		pack DATA;
+		
 						
 		DATA.src = TOS_NODE_ID;
 		DATA.dest = myMsg->src;
