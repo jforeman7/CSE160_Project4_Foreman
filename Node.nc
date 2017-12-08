@@ -36,7 +36,7 @@ typedef struct chatMessage
 	char message[50];
 	int msgLength;
 	
-	char username[50];
+	int username[50];
 	int usernameLength;
 }chatMessage;
 
