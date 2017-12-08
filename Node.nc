@@ -32,7 +32,7 @@ typedef struct lspMap
 typedef struct chatClient
 {
 	char username[50];
-	bool active = FALSE;
+	bool active;
 }chatClient;
 
 // Sequence number of this node.
@@ -122,8 +122,14 @@ implementation
 
 	event void Boot.booted()
 	{
+		int i;
 		call AMControl.start();
 		dbg(GENERAL_CHANNEL, "Booted\n");
+		
+		
+		for(i = 0; i < 20; i++)
+			user[i].active = FALSE;
+		
 	}
 
 	event void Timer1.fired()
