@@ -29,20 +29,12 @@ typedef struct lspMap
 	uint8_t cost[20];
 }lspMap;
 
-typedef nx_struct chatMessage
+typedef struct chatClient
 {
-	nx_int8_t flag;
+	uint16_t Node;
 	
-	nx_int32_t message;
-	nx_int8_t msgLength;
-	
-	nx_int32_t username;
-	nx_int8_t usernameLength;
-	
-	nx_int32_t dest;
-	nx_int8_t destLength;
-	
-}chatMessage;
+	char username[50];
+}chatClient;
 
 // Sequence number of this node.
 int seqNum = 1;
@@ -65,6 +57,8 @@ uint16_t destinationM;
 char username[50];
 char message[100];
 char dest[50];
+
+chatClient users[10];
 
 module Node
 {
@@ -180,36 +174,11 @@ implementation
 			// If the message has a TTL of 0, do nothing with it.
 			if(myMsg->TTL == 0) {return msg;}
 			
-			else if(myMsg->protocol == PROTOCOL_TCP_CHAT && myMsg->dest == TOS_NODE_ID)
+			else if(myMsg->protocol == PROTOCOL_TCP_USER && myMsg->dest == TOS_NODE_ID)
 			{
-				chatMessage* receivedChat;
 				int i = 0;
 				
-				dbg(TRANSPORT_CHANNEL, "Chat message received.\n");
-				
-				//receivedChat = myMsg->payload;
-				
-				/*if(receivedChat->flag == 1)
-				{
-					dbg(TRANSPORT_CHANNEL, "Adding client username: ");
-					
-					while(TRUE)
-					{
-						if(i > 20)
-						{
-							printf("%c", receivedChat->username[i]);
-							i++;
-							break;
-						}
-						else
-						{
-							printf("%c", receivedChat->username[i]);
-							i++;
-						}
-					}
-					
-					printf("Length is %d\n", receivedChat->usernameLength);
-				}*/
+				dbg(TRANSPORT_CHANNEL, "Username received: ");
 				
 				while(TRUE)
 					{
