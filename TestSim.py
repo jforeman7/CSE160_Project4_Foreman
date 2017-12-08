@@ -189,9 +189,11 @@ def main():
     
     s.runTime(15);
     
+    s.AppClient(2, "nimitt\r\n");
+    
     #s.TestClose(2, 1, 80);
     
-    #s.runTime(15)
+    s.runTime(15)
     #s.neighborDMP(3);
     #i=0;
     #for i in range(1, s.numMote+1):
