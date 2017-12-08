@@ -385,10 +385,11 @@ implementation
 						// Specifies that a connection has been established.
 						pack DATA;
 						
-						chatMessage tempChat;
-						tempChat.flag = 1;
+						chatMessage* tempChat;
 						
-						while(TRUE)
+						tempChat->flag = 1;
+						
+						/*while(TRUE)
 						{
 							if(username[i] == '\n')
 							{
@@ -401,7 +402,7 @@ implementation
 								tempChat.username[i] = username[i];
 								i++;
 							}
-						}
+						}*/
 						
 						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &tempChat, (uint8_t) sizeof(tempChat));
 					
