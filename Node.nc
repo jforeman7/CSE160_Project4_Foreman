@@ -34,7 +34,7 @@ typedef nx_struct chatMessage
 	nx_int8_t flag;
 	
 	nx_int32_t message[50];
-	nx_int8_tmsgLength;
+	nx_int8_t msgLength;
 	
 	nx_int32_t username[50];
 	nx_int8_t usernameLength;
