@@ -808,12 +808,14 @@ implementation
 			if(mssg[i] == '\n')
 			{
 				message[i] = mssg[i];
+				printf("%c\n", mssg[i]);
 				i++;
 				break;
 			}
 			else
 			{
 				message[i] = mssg[i];
+				printf("%c", mssg[i]);
 				i++;
 			}
 		}
