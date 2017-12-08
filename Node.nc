@@ -776,12 +776,10 @@ implementation
 		for(j = 0; j < i; j++)
 			printf("%c", username[j]);
 		
-		/*
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
 		{
 			call Transport.connectChatClient(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
 		}
-		*/
 	}
 	
 	event void CommandHandler.message(char *mssg)
