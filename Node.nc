@@ -172,8 +172,6 @@ implementation
 			// If the message has a TTL of 0, do nothing with it.
 			if(myMsg->TTL == 0) {return msg;}
 			
-			dbg(TRANSPORT_CHANNEL, "IN RECEIVE");
-			
 			else if(myMsg->protocol == PROTOCOL_TCP_USER && myMsg->dest == TOS_NODE_ID)
 			{
 				int i = 0;
