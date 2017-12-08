@@ -54,7 +54,7 @@ uint16_t DPM;
 uint16_t destinationM;
 
 //Project 4 Var: 
-char username[50];
+int username[50];
 char message[100];
 char dest[50];
 
@@ -791,7 +791,7 @@ implementation
 		
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
 		{
-			call Transport.connectChatClient(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
+			//call Transport.connectChatClient(tempSocket.fd, &tempSocket.socketState.dest, &confirmedList);
 		}
 	}
 	
