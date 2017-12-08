@@ -362,7 +362,7 @@ implementation
 						
 						dbg(TRANSPORT_CHANNEL, "Chat SYN has been received.\n");
 							
-						printf("%c", receivedSocket->username[0]);
+						//printf("%c", receivedSocket->username[0]);
 						
 						return msg;
 					}
