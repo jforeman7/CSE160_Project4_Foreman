@@ -388,6 +388,8 @@ implementation
 						chatMessage tempChat;
 						
 						tempChat.flag = 1;
+						tempChat.username[0] = 0;
+						tempChat.message[0] = 0;
 						
 						/*while(TRUE)
 						{
