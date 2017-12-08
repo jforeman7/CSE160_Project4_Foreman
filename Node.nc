@@ -340,8 +340,6 @@ implementation
 						
 					} // End flag 5 handle.
 					else if(receivedSocket->socketState.flag == 8){ //SYN from chat client 
-					/*
-					// Conditions hold true, reply with a SYN_ACK.
 						// Update the state of the Socket.
 						tempSocket.socketState.flag = 9;
 						tempSocket.socketState.dest.port = receivedSocket->socketState.src;
@@ -353,16 +351,11 @@ implementation
 						// Make the SYN_ACK.
 						makePack(&SYN_ACK, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &tempSocket, (uint8_t) sizeof(tempSocket));
 						
-						dbg(TRANSPORT_CHANNEL, "SYN packet received from Node %d port %d, replying with SYN_ACK.\n", myMsg->src, receivedSocket->socketState.src);
+						dbg(TRANSPORT_CHANNEL, "Chat client SYN packet received from Node %d port %d, replying with SYN_ACK.\n", myMsg->src, receivedSocket->socketState.src);
 						
 						// Send out the SYN_ACK.
 						call Sender.send(SYN_ACK, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
-					*/
-						
-						dbg(TRANSPORT_CHANNEL, "Chat SYN has been received.\n");
-							
-						//printf("%c", receivedSocket->username[0]);
 						
 						return msg;
 					}
@@ -385,10 +378,10 @@ implementation
 						// Make the ACK.
 						makePack(&ACK, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &tempSocket, (uint8_t) sizeof(tempSocket));
 					
-						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established, replying with an ACK.\n");
+						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established.\n");
 						
 						// Send out the ACK.
-						call Sender.send(ACK, forwardPacketTo(&confirmedList, myMsg->src));
+						//call Sender.send(ACK, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
 					}
 					
