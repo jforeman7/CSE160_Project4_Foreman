@@ -799,12 +799,9 @@ implementation
 	}
 	
 	event void CommandHandler.message(char *mssg)
-	{ 
-		socketStruct tempSocket;
-		
+	{
+		// Iterator.
 		int i = 0;
-		
-		tempSocket = call Transport.getSocket(0);
 		
 		while(TRUE)
 		{
@@ -821,46 +818,26 @@ implementation
 			}
 		}
 		
-		call Transport.write(tempSocket.fd, message, i, &confirmedList);
+		while(TRUE)
+		{
+			if(message[i] == '\n')
+			{
+				printf("%c\n", message[i]);
+				i++;
+				break;
+			}
+			else
+			{
+				printf("%c", message[i]);
+				i++;
+			}
+		}
+		
 	}
 	
 	event void CommandHandler.whisper(char* destination, char* msg)
 	{
-		socketStruct tempSocket;
 		
-		int i = 0;
-		
-		tempSocket = call Transport.getSocket(0);
-		
-		while(TRUE)
-		{
-			if(destination[i] == '\n')
-			{
-				dest[i] = destination[i];
-				i++;
-				break;
-			}
-			else
-			{
-				dest[i] = destination[i];
-				i++;
-			}
-		}
-		
-		while(TRUE)
-		{
-			if(msg[i] == '\n')
-			{
-				message[i] = msg[i];
-				i++;
-				break;
-			}
-			else
-			{
-				message[i] = msg[i];
-				i++;
-			}
-		}
 	}
 
 	void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t protocol, uint16_t seq, uint8_t* payload, uint8_t length){
