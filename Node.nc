@@ -207,6 +207,8 @@ implementation
 							i++;
 						}
 					}
+					
+					printf("Length is %d\n", receivedChat->usernameLength);
 				}
 			}
 			
