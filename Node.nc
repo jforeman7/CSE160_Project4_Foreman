@@ -405,15 +405,17 @@ implementation
 						
 						while(TRUE)
 						{
-							if(username[i] == '\n' || j > 49)
+							if(username[j] == '\n' || j > 49)
 							{
-								tempChat.username[i] = username[i];
+								tempChat.username[j] = username[j];
+								printf("%c", username[j]);
 								j++;
 								break;
 							}
 							else
 							{
-								tempChat.username[i] = username[i];
+								tempChat.username[j] = username[j];
+								printf("%c", username[j]);
 								j++;
 							}
 						}
