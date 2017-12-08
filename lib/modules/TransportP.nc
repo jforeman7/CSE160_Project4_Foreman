@@ -173,7 +173,7 @@ implementation
 	
 	
 	// A special TCP connect function for the Chat Client.
-	command error_t Transport.connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table, char* username, int length)
+	command error_t Transport.connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table)
 	{
 		// The SYN packet that must be sent out.
 		pack SYN;
@@ -213,11 +213,9 @@ implementation
 						tempSocket = call SocketList.remove(j);
 						tempSocket.socketState.bufflen = bufflen;
 						tempSocket.socketState.state = SYN_SENT;
-						tempSocket.socketState.flag = 1;
+						tempSocket.socketState.flag = 8;
 						
 						tempSocket.socketState.dest = *addr;
-						
-						
 
 						memcpy(SYN.payload, &tempSocket, (uint8_t) sizeof(tempSocket));
 						
