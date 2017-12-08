@@ -340,6 +340,7 @@ implementation
 						
 					} // End flag 5 handle.
 					else if(receivedSocket->socketState.flag == 8){ //SYN from chat client 
+					/*
 					// Conditions hold true, reply with a SYN_ACK.
 						// Update the state of the Socket.
 						tempSocket.socketState.flag = 9;
@@ -356,6 +357,17 @@ implementation
 						
 						// Send out the SYN_ACK.
 						call Sender.send(SYN_ACK, forwardPacketTo(&confirmedList, myMsg->src));
+						return msg;
+					*/
+						//char tempMessage[100];
+						//int i;
+						
+						dbg(TRANSPORT_CHANNEL, "Chat SYN has been received.\n");
+						
+						//for(i = 0; i < 20; i++)
+						//{
+							
+						//}
 						return msg;
 					}
 					else if(receivedSocket->socketState.flag == 9){
