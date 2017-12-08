@@ -212,6 +212,7 @@ implementation
 			else if(myMsg->protocol == PROTOCOL_TCP_MSG && myMsg->dest == TOS_NODE_ID)
 			{
 				pack DATA;
+				char chat[25];
 				int i = 0;
 				
 				dbg(TRANSPORT_CHANNEL, "Message received from client: ");
@@ -238,12 +239,14 @@ implementation
 					if(myMsg->payload[i] == '\n')
 					{
 						printf("%c", myMsg->payload[i]);
+						chat[i] = myMsg->payload[i];
 						i++;
 						break;
 					}
 					else
 					{
 						printf("%c", myMsg->payload[i]);
+						chat[i] = myMsg->payload[i];
 						i++;
 					}
 				}	 
@@ -260,7 +263,7 @@ implementation
 						DATA.TTL = MAX_TTL;
 						DATA.protocol = PROTOCOL_TCP_MSG_CLIENT;
 
-						memcpy(DATA.payload, &myMsg->payload, (uint8_t) sizeof(myMsg->payload));
+						memcpy(DATA.payload, &chat, (uint8_t) sizeof(chat));
 
 						// Send out the Username.
 						call Sender.send(DATA, forwardPacketTo(&confirmedList, i));
