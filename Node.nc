@@ -227,7 +227,7 @@ implementation
 				{
 					if(myMsg->payload[i] == '\n')
 					{
-						printf("%c", myMsg->payload[i];
+						printf("%c", myMsg->payload[i]);
 						i++;
 						break;
 					}
