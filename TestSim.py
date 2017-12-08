@@ -189,7 +189,7 @@ def main():
     
     s.runTime(15);
     
-    s.AppClient(3, "nimitt\r\n");
+    #s.AppClient(3, "nimitt\r\n");
     
     #s.TestClose(2, 1, 80);
     
