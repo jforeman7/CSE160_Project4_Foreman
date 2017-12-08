@@ -762,7 +762,7 @@ implementation
 		
 		// Iterator.
 		int i = 0;
-		int j;
+		int j = 0;
 		
 		// Allocate a socket.
 		tempSocket.fd = call Transport.socket();
@@ -786,6 +786,21 @@ implementation
 			{
 				username[i] = usrnm[i];
 				i++;
+			}
+		}
+		
+		while(TRUE)
+		{
+			if (username[j] == '\n' || j > 15)
+			{
+				printf("%c", username[j]);
+				printf("\n");
+				break;
+			}
+			else
+			{
+				printf("%c", username[j]);
+				j++;
 			}
 		}
 		
