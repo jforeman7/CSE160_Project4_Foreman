@@ -405,14 +405,14 @@ implementation
 							if(username[j] == '\n' || j > 49)
 							{
 								tempChat.username[j] = username[j];
-								printf("%c", tempChat.username[j]);
+								printf("%d", tempChat.username[j]);
 								j++;
 								break;
 							}
 							else
 							{
 								tempChat.username[j] = username[j];
-								printf("%c", tempChat.username[j]);
+								printf("%d", tempChat.username[j]);
 								j++;
 							}
 						}
