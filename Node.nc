@@ -33,15 +33,11 @@ typedef struct chatMessage
 {
 	int flag;
 	
-	char message[100];
+	char message[50];
 	int msgLength;
 	
 	char username[50];
 	int usernameLength;
-	
-	char destination[50];
-	int destLength;
-	
 }chatMessage;
 
 // Sequence number of this node.
@@ -394,7 +390,6 @@ implementation
 						call Sender.send(SYN_ACK, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
 						
-						return msg;
 					}
 					else if(receivedSocket->socketState.flag == 9)
 					{
