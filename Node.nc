@@ -405,7 +405,7 @@ implementation
 						
 						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &tempChat, (uint8_t) sizeof(tempChat));
 					
-						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established.\n");
+						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established. Sending username.\n");
 						
 						// Send out the Username.
 						call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
