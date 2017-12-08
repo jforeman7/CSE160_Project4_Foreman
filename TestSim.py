@@ -145,6 +145,9 @@ class TestSim:
         
     def AppServer(self, address):
         self.sendCMD(self.CMD_APP_SERVER, address, "app server command");
+        
+    def AppClient(self, address, username):
+        self.sendCMD(self.CMD_APP_CLIENT, address, "{0}".format(username));
     
     
 def main():
@@ -177,10 +180,11 @@ def main():
     #s.runTime(100);
     
     #s.TestServer(1, 80);
-    s.AppServer(1);
+    s.AppServer(2);
     
     s.runTime(15);
     
+    s.AppClient(1, "jeff");
     #s.TestClient(2, 50, 80, 1, 255);
     
     s.runTime(15);
