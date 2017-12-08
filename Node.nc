@@ -738,7 +738,7 @@ implementation
 			dbg(TRANSPORT_CHANNEL, "Unable to edit socket %d.\n", fd);
 	}
 
-	event void CommandHandler.setAppClient(char *usrnm)
+	event void CommandHandler.setAppClient(char* usrnm)
 	{
 		// Temp socket variables.
 		socketStruct tempSocket;
@@ -756,6 +756,8 @@ implementation
 		address.addr = TOS_NODE_ID;
 		
 		dbg(TRANSPORT_CHANNEL, "Setting up chat client.\n");
+		
+		dbg(TRANSPORT_CHANNEL, "%c", usrnm[0]);
 		/*while(TRUE)
 		{
 			if(usrnm[i] == '\n')
@@ -765,12 +767,11 @@ implementation
 				break;
 			}
 			else
-			{*/
-				//username[i] = usrnm[i];
-				printf("%c", usrnm[i]);
-				//i++;
-			//}
-		//}
+			{
+				username[i] = usrnm[i];
+				i++;
+			}
+		}*/
 		
 		/*
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
