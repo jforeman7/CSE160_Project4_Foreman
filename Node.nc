@@ -32,6 +32,7 @@ typedef struct lspMap
 typedef struct chatClient
 {
 	char username[50];
+	bool active = FALSE;
 }chatClient;
 
 // Sequence number of this node.
@@ -197,11 +198,14 @@ implementation
 					}
 				}
 				
+				user[myMsg->src].active = TRUE;
+				
 				return msg;
 			}
 			
 			else if(myMsg->protocol == PROTOCOL_TCP_MSG && myMsg->dest == TOS_NODE_ID)
 			{
+				pack DATA;
 				int i = 0;
 				
 				dbg(TRANSPORT_CHANNEL, "Message received from client: ");
@@ -236,7 +240,21 @@ implementation
 						printf("%c", myMsg->payload[i]);
 						i++;
 					}
-				}
+				}	 
+						
+				DATA.src = TOS_NODE_ID;
+				DATA.dest = myMsg->src;
+				DATA.seq = 1;
+				DATA.TTL = MAX_TTL;
+				DATA.protocol = PROTOCOL_TCP_MSG_CLIENT;
+
+				memcpy(DATA.payload, &myMsg->payload, (uint8_t) sizeof(myMsg->payload));
+
+				dbg(TRANSPORT_CHANNEL, "Message has been received. Sending out to chat clients.\n");
+
+				// Send out the Username.
+				call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
+				return msg;
 				
 			}
 			
