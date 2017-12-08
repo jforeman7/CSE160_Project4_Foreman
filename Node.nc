@@ -746,6 +746,7 @@ implementation
 		
 		// Iterator.
 		int i = 0;
+		int j;
 		
 		// Allocate a socket.
 		tempSocket.fd = call Transport.socket();
@@ -757,8 +758,7 @@ implementation
 		
 		dbg(TRANSPORT_CHANNEL, "Setting up chat client.\n");
 		
-		dbg(TRANSPORT_CHANNEL, "%c", usrnm[0]);
-		/*while(TRUE)
+		while(TRUE)
 		{
 			if(usrnm[i] == '\n')
 			{
@@ -771,7 +771,10 @@ implementation
 				username[i] = usrnm[i];
 				i++;
 			}
-		}*/
+		}
+		
+		for(j = 0; j < i; j++)
+			dbg(TRANSPORT_CHANNEL, "%c", username[j]);
 		
 		/*
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
