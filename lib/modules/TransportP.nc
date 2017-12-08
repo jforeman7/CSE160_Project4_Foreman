@@ -179,7 +179,7 @@ implementation
 		pack SYN;
 		
 		// Iterators.
-		int i, j, k;
+		int i, j;
 		
 		// Next hop variable.
 		uint16_t nextHop;
