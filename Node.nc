@@ -774,7 +774,7 @@ implementation
 		}
 		
 		for(j = 0; j < i; j++)
-			dbg(TRANSPORT_CHANNEL, "%c", username[j]);
+			printf("%c", username[j]);
 		
 		/*
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
