@@ -76,7 +76,7 @@ interface Transport{
     *    from the pass buffer. This may be shorter then bufflen
     */
     
-   command error_t connectChatClient(socket_t fd, socket_addr_t *addr, lspTable* Table, char* username);
+   command error_t connectChatClient(socket_t fd, socket_addr_t *addr, lspTable* Table, char* username, int i);
     
    command uint16_t write(socket_t fd, uint8_t *buff, uint16_t bufflen, lspTable* Table);
 
