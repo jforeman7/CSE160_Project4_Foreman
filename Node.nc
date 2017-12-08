@@ -180,10 +180,7 @@ implementation
 				
 				receivedChat = myMsg->payload;
 				
-				if(receivedChat->flag == 1)
-				{
-					dbg(TRANSPORT_CHANNEL, "Username received.");
-				}
+				dbg(TRANSPORT_CHANNEL, "Flag is: %d", receivedChat->flag);
 			}
 			
 			// Transport packet. If intended for this node, handle it.
