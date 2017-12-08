@@ -391,25 +391,6 @@ implementation
 						call Sender.send(ACK, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
 					}
-					else if(receivedSocket->socketState.flag == 10){
-					// Data has been received, now to read it.
-						
-						pack ACK;
-						
-						tempSocket = call Transport.getSocket(i);
-
-						tempSocket.socketState.flag = 11;
-						tempSocket.socketState.dest.port = receivedSocket->socketState.src;
-						tempSocket.socketState.dest.addr = myMsg->src;
-						tempSocket.socketState.state = ESTABLISHED;
-						tempSocket.socketState.bufflen = receivedSocket->socketState.bufflen;
-						call Transport.setSocket(tempSocket.fd, tempSocket);
-
-						makePack(&ACK, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &tempSocket, (uint8_t) sizeof(tempSocket));
-					
-						call Sender.send(ACK, forwardPacketTo(&confirmedList, myMsg->src));
-						return msg;
-					}
 					
 				} // End i loop.
 				
