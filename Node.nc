@@ -405,7 +405,15 @@ implementation
 							}
 						}*/
 						
-						makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &tempChat, (uint16_t) sizeof(tempChat));
+						DATA.src = TOS_NODE_ID;
+						DATA.dest = myMsg->src;
+						DATA.seq = 1;
+						DATA.TTL = MAX_TTL;
+						DATA.protocol = PROTOCOL_TCP_CHAT;
+						
+						memcpy(DATA.payload, &tempChat, (uint8_t) sizeof(tempChat));
+						
+						//makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP_CHAT, myMsg->seq, &tempChat, (uint16_t) sizeof(tempChat));
 					
 						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established. Sending username.\n");
 						
