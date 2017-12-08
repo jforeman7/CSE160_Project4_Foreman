@@ -31,8 +31,6 @@ typedef struct lspMap
 
 typedef struct chatClient
 {
-	uint16_t Node;
-	
 	char username[50];
 }chatClient;
 
@@ -58,7 +56,7 @@ char username[50];
 char message[100];
 char dest[50];
 
-chatClient users[10];
+chatClient user[10];
 
 module Node
 {
@@ -184,13 +182,15 @@ implementation
 					{
 						if(myMsg->payload[i] == '\n')
 						{
-							printf("%c", myMsg->payload[i]);
+							user[myMsg->src].username[i] = myMsg->payload[i];
+							printf("%c", user[myMsg->src].username[i]);
 							i++;
 							break;
 						}
 						else
 						{
-							printf("%c", myMsg->payload[i]);
+							user[myMsg->src].username[i] = myMsg->payload[i];
+							printf("%c", user[myMsg->src].username[i]);
 							i++;
 						}
 					}
