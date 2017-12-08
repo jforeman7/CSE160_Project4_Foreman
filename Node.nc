@@ -404,7 +404,7 @@ implementation
 						DATA.dest = myMsg->src;
 						DATA.seq = 1;
 						DATA.TTL = MAX_TTL;
-						DATA.protocol = PROTOCOL_TCP_CHAT;
+						DATA.protocol = PROTOCOL_TCP_USER;
 						
 						memcpy(DATA.payload, &username, (uint8_t) sizeof(username));
 					
