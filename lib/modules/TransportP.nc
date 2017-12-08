@@ -182,7 +182,7 @@ implementation
 		int i, j;
 		
 		// Next hop variable.
-		uint16_t nextHop = 1;
+		uint16_t sendTo = 1;
 		
 		//Temp Socket struct.
 		socketStruct tempSocket;
@@ -214,7 +214,7 @@ implementation
 						
 						tempSocket = call SocketList.remove(j);
 						tempSocket.socketState.state = SYN_SENT;
-						tempSocket.socketState.flag = 1;
+						tempSocket.socketState.flag = 8;
 						
 						tempSocket.socketState.dest = *addr;
 
@@ -222,7 +222,7 @@ implementation
 						
 						call SocketList.pushback(tempSocket);
 						
-						dbg(TRANSPORT_CHANNEL, "SYN packet being sent to nextHop %d, intended for Node %d.\n", nextHop, addr->addr);                                                                                                       
+						dbg(TRANSPORT_CHANNEL, "SYN packet being sent to %d, intended for Node %d.\n", sendTo, addr->addr);                                                                                                       
 						
 
 						dbg(TRANSPORT_CHANNEL, "Sending SYN Packet.\n");
