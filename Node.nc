@@ -362,26 +362,16 @@ implementation
 					else if(receivedSocket->socketState.flag == 9){
 					// Packet to reply to the SYN_ACK.
 						// Specifies that a connection has been established.
-						pack ACK;
+						pack DATA;
 						
-						// Get the current state of the Socket.
-						tempSocket = call Transport.getSocket(i);
 						
-						// Update the state of the Socket.
-						tempSocket.socketState.flag = 10;
-						tempSocket.socketState.dest.port = receivedSocket->socketState.src;
-						tempSocket.socketState.dest.addr = myMsg->src;
-						tempSocket.socketState.state = ESTABLISHED;
-						tempSocket.socketState.bufflen = receivedSocket->socketState.bufflen;
-						call Transport.setSocket(tempSocket.fd, tempSocket);
 						
-						// Make the ACK.
-						makePack(&ACK, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &tempSocket, (uint8_t) sizeof(tempSocket));
+						//makePack(&DATA, TOS_NODE_ID, myMsg->src, myMsg->TTL, PROTOCOL_TCP, myMsg->seq, &tempSocket, (uint8_t) sizeof(tempSocket));
 					
 						dbg(TRANSPORT_CHANNEL, "SYN_ACK has been received, a connection has been established.\n");
 						
 						// Send out the ACK.
-						//call Sender.send(ACK, forwardPacketTo(&confirmedList, myMsg->src));
+						//call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
 						return msg;
 					}
 					
