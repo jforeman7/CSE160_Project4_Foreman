@@ -189,7 +189,20 @@ implementation
 				{
 					dbg(TRANSPORT_CHANNEL, "Adding client username: ");
 					
-					printf("%d\n", receivedChat->username[0]);
+					while(TRUE)
+					{
+						if(i > 20)
+						{
+							printf("%d", receivedChat->username[i]);
+							i++;
+							break;
+						}
+						else
+						{
+							printf("%d", receivedChat->username[i]);
+							i++;
+						}
+					}
 				}
 			}
 			
