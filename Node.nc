@@ -791,7 +791,7 @@ implementation
 		
 		while(TRUE)
 		{
-			if (username[j] == '\n' || j > 15)
+			if (username[j] == '\0' || j == i - 1)
 			{
 				printf("%c", username[j]);
 				printf("\n");
