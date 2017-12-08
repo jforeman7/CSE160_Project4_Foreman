@@ -247,21 +247,33 @@ implementation
 						i++;
 					}
 				}	 
-						
-				DATA.src = TOS_NODE_ID;
-				DATA.dest = myMsg->src;
-				DATA.seq = 1;
-				DATA.TTL = MAX_TTL;
-				DATA.protocol = PROTOCOL_TCP_MSG_CLIENT;
-
-				memcpy(DATA.payload, &myMsg->payload, (uint8_t) sizeof(myMsg->payload));
-
+				
 				dbg(TRANSPORT_CHANNEL, "Message has been received. Sending out to chat clients.\n");
+				
+				for(i = 0; i < 20; i++)
+				{
+					if(user[i].active == TRUE)
+					{
+						DATA.src = TOS_NODE_ID;
+						DATA.dest = i;
+						DATA.seq = 1;
+						DATA.TTL = MAX_TTL;
+						DATA.protocol = PROTOCOL_TCP_MSG_CLIENT;
 
-				// Send out the Username.
-				call Sender.send(DATA, forwardPacketTo(&confirmedList, myMsg->src));
+						memcpy(DATA.payload, &myMsg->payload, (uint8_t) sizeof(myMsg->payload));
+
+						// Send out the Username.
+						call Sender.send(DATA, forwardPacketTo(&confirmedList, i));
+					}
+				}
+				
 				return msg;
 				
+			}
+			
+			else if(myMsg->protocol == PROTOCOL_TCP_MSG_CLIENT && myMsg->dest == TOS_NODE_ID)
+			{
+				dbg(TRANSPORT_CHANNEL, "Message received from client.\n");
 			}
 			
 			// Transport packet. If intended for this node, handle it.
