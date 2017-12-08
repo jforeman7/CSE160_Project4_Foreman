@@ -171,6 +171,13 @@ implementation
 		
 	} // End accept.
 	
+	
+	// A special TCP connect function for the Chat Client.
+	command connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table, char* username)
+	{
+		
+	}
+	
 	command uint16_t Transport.write(socket_t fd, uint8_t *buff, uint16_t bufflen, lspTable* Table)
 	{
 		// Temp Socket struct.
