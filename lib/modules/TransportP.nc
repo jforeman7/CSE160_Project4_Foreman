@@ -201,7 +201,7 @@ implementation
 		{
 			if(Table->lspEntries[i].dest == SYN.dest)
 			{
-				nextHop = Table->lspEntries[i].nextHop;
+				nextHop = 1//Table->lspEntries[i].nextHop;
 				
 				// Modify the Socket State.
 				for(j = 0; j < call SocketList.size(); j++)
@@ -226,7 +226,7 @@ implementation
 						dbg(TRANSPORT_CHANNEL, "Sending SYN Packet.\n");
 						
 						// Send it to the next hop.
-						call Sender.send(SYN, nextHop);
+						call Sender.send(SYN, 1);
 						
 						return SUCCESS;
 					}
