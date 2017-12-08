@@ -175,6 +175,70 @@ implementation
 	// A special TCP connect function for the Chat Client.
 	command error_t Transport.connectChatClient(socket_t fd, socket_addr_t *addr, lspTable *Table, char* username, int length)
 	{
+		// The SYN packet that must be sent out.
+		pack SYN;
+		
+		// Iterators.
+		int i, j;
+		
+		// Next hop variable.
+		uint16_t nextHop;
+		
+		//Temp Socket struct.
+		socketStruct tempSocket;
+		
+		dbg(TRANSPORT_CHANNEL, "Creating SYN packet intended for node %d, port %d.\n", addr->addr, addr->port);
+		
+		// Finish making the SYN packet.
+		SYN.src = TOS_NODE_ID;
+		SYN.dest = addr->addr;
+		SYN.seq = 1;
+		SYN.TTL = MAX_TTL;
+		SYN.protocol = PROTOCOL_TCP;
+		
+		// Find the next hop for the destination node and send it there.
+		for(i = 0; i < Table->entries; i++)
+		{
+			if(Table->lspEntries[i].dest == SYN.dest)
+			{
+				nextHop = Table->lspEntries[i].nextHop;
+				
+				// Modify the Socket State.
+				for(j = 0; j < call SocketList.size(); j++)
+				{
+					tempSocket = call SocketList.get(j);
+					
+					if(fd == tempSocket.fd)
+					{
+						tempSocket = call SocketList.remove(j);
+						tempSocket.socketState.bufflen = bufflen;
+						tempSocket.socketState.state = SYN_SENT;
+						tempSocket.socketState.flag = 1;
+						
+						tempSocket.socketState.dest = *addr;
+						
+						
+
+						memcpy(SYN.payload, &tempSocket, (uint8_t) sizeof(tempSocket));
+						
+						call SocketList.pushback(tempSocket);
+						
+						//dbg(TRANSPORT_CHANNEL, "SYN packet being sent to nextHop %d, intended for Node %d.\n",nextHop, addr->addr);                                                                                                       
+						
+
+						dbg(TRANSPORT_CHANNEL, "Sending SYN Packet.\n");
+						
+						// Send it to the next hop.
+						call Sender.send(SYN, nextHop);
+						
+						return SUCCESS;
+					}
+				}
+				
+				return SUCCESS;
+			}
+		}
+		
 		return FAIL;
 	}
 	
