@@ -25,6 +25,13 @@ typedef nx_struct pack{
 	nx_uint8_t payload[PACKET_MAX_PAYLOAD_SIZE];
 }pack;
 
+typedef nx_struct chatMessage
+{
+	nx_uint8_t message[100];
+	nx_uint8_t username[50];
+	nx_uint8_t flag;
+}chatMessage;
+
 /*
  * logPack
  * 	Sends packet information to the general channel.
