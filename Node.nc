@@ -385,9 +385,9 @@ implementation
 						// Specifies that a connection has been established.
 						pack DATA;
 						
-						chatMessage* tempChat;
+						chatMessage tempChat;
 						
-						tempChat->flag = 1;
+						tempChat.flag = 1;
 						
 						/*while(TRUE)
 						{
