@@ -202,6 +202,7 @@ implementation
 				
 				dbg(TRANSPORT_CHANNEL, "Message received from client: ");
 				
+				/*
 				while(TRUE)
 				{
 					if(myMsg->payload[i] == '\n')
@@ -217,7 +218,7 @@ implementation
 						printf("%c", user[myMsg->src].username[i]);
 						i++;
 					}
-				}
+				}*/
 			}
 			
 			// Transport packet. If intended for this node, handle it.
@@ -858,7 +859,7 @@ implementation
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
 
 		// Send out the Username.
-		call Sender.send(DATA, forwardPacketTo(&confirmedList, DATA.dest));
+		call Sender.send(DATA, forwardPacketTo(&confirmedList, 1));
 		
 	}
 	
