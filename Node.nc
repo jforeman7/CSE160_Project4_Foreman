@@ -756,7 +756,7 @@ implementation
 		address.addr = TOS_NODE_ID;
 		
 		dbg(TRANSPORT_CHANNEL, "Setting up chat client.\n");
-		while(TRUE)
+		/*while(TRUE)
 		{
 			if(usrnm[i] == '\n')
 			{
@@ -765,12 +765,12 @@ implementation
 				break;
 			}
 			else
-			{
-				username[i] = usrnm[i];
+			{*/
+				//username[i] = usrnm[i];
 				printf("%c", usrnm[i]);
-				i++;
-			}
-		}
+				//i++;
+			//}
+		//}
 		
 		/*
 		if (call Transport.bind(tempSocket.fd, &address) == SUCCESS)
