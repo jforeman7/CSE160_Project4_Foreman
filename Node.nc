@@ -857,9 +857,8 @@ implementation
 		memcpy(DATA.payload, &message, (uint8_t) sizeof(message));
 
 		dbg(TRANSPORT_CHANNEL, "Sending message.\n");
-
-		// Send out the Username.
-		call Sender.send(DATA, forwardPacketTo(&confirmedList, 1));
+		
+		call Sender.send(DATA, 1);
 		
 	}
 	
